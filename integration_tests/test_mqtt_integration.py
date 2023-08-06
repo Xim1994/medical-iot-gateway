@@ -1,5 +1,5 @@
 import unittest
-from app.application.mqtt_use_cases import UseCases
+from app.application.mqtt_use_cases import MqttUseCase
 from app.domain.device import Device
 import os
 from dotenv import load_dotenv
@@ -15,7 +15,7 @@ class TestIntegrationMQTT(unittest.TestCase):
         pri_key_filepath=os.getenv("PRIVATE_KEY_FILEPATH"),
         ca_filepath=os.getenv("CA_FILEPATH")
     )
-        self.use_cases = UseCases(self.device)
+        self.use_cases = MqttUseCase(self.device)
 
     def test_mqtt_integration(self):
         # Intenta establecer una conexión con el servidor MQTT

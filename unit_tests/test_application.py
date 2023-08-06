@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import MagicMock
-from app.application.mqtt_use_cases import UseCases
+from app.application.mqtt_use_cases import MqttUseCase
 from app.domain.device import Device
 
 class TestUseCases(unittest.TestCase):
@@ -11,7 +11,7 @@ class TestUseCases(unittest.TestCase):
             pri_key_filepath="pri_key_filepath",
             ca_filepath="ca_filepath"
         )
-        self.use_cases = UseCases(self.device)
+        self.use_cases = MqttUseCase(self.device)
 
     def test_connect_device(self):
         self.use_cases.connector.connect = MagicMock(return_value=("connection", "Connected!"))
