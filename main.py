@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 from app.domain.device import Device
 from app.application.mqtt_use_cases import MqttUseCase
 from app.application.ble_use_case import BleUseCase
+from app.infrastructure.database.sqlite_connector import SqliteConnector
 import os
 
 load_dotenv()
@@ -15,7 +16,8 @@ def main():
     )
 
     mqtt_use_case = MqttUseCase(device)
-    ble_use_case = BleUseCase()
+    device_repository = SqliteConnector(db_path="devices.db")
+    ble_use_case = BleUseCase(repository=device_repository)
 
     devices = ble_use_case.scan_ble_devices()
 
