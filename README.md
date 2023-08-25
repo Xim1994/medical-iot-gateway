@@ -90,3 +90,48 @@ For open source projects, say how it is licensed.
 
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+
+
+Documentación de la Arquitectura DDD en el Gateway 
+
+ 
+
+Infraestructura de Comunicación BLE 
+
+En la capa de infraestructura, implementamos el escaneo y la conexión BLE con dispositivos médicos, utilizando la biblioteca bleak. Esta parte del código se encarga de descubrir dispositivos Bluetooth cercanos, establecer conexiones con ellos y comunicarse con los servicios y características adecuados para gestionar estos dispositivos médicos (esto último, falta por desarrollar). La información sobre los dispositivos con los que el gateway se ha conectado previamente se almacena en la base de datos SQLite para una reconexión más rápida. 
+
+ 
+
+Integración con MQTT y AWS 
+
+En esta parte de la capa de infraestructura, utilizamos las bibliotecas awscrt y awsiot del sdk de aws para comunicarnos con el broker MQTT de AWS. Gracias a estas bibliotecas, podemos construir conexiones MQTT seguras con AWS IoT Core. Enviamos mensajes MQTT para informar sobre el estado de los dispositivos médicos y recibimos comandos para gestionarlos. 
+
+ 
+
+Interacción con la Base de Datos SQLite 
+
+En la capa de infraestructura, utilizamos la biblioteca sqlite3 para interactuar con una base de datos SQLite. Esta base de datos almacena información sobre los dispositivos médicos con los que el gateway se ha conectado previamente. Es fundamental ejecutar el script database.py para inicializar la base de datos y crear la tabla necesaria antes de guardar o consultar cualquier dato en ella. 
+
+ 
+
+Capa de Aplicación 
+
+Esta capa se encarga de coordinar las interacciones entre las capas de infraestructura y dominio. Por ejemplo, cuando se recibe un comando a través de MQTT para obtener información sobre un dispositivo médico, la capa de aplicación se encarga de interactuar con la base de datos para obtener los datos del dispositivo correspondiente y luego comunica la información al sistema o usuario a través de las funcionalidades BLE y MQTT en la capa de infraestructura. 
+
+ 
+
+Integración con la API de BIoT 
+
+En la capa de infraestructura, implementamos la integración con la API de BIoT utilizando la biblioteca requests. Esto permite que el gateway envíe y reciba información de la plataforma BIoT, incluyendo información sobre los dispositivos médicos, su estado y cualquier acción que se deba realizar en ellos. 
+
+ 
+
+Capa de Dominio 
+
+En esta capa, modelamos los conceptos clave del dominio, como los dispositivos médicos Bluetooth. La lógica para gestionar estos dispositivos se implementa aquí. Además, se definen eventos de dominio que representan cambios significativos, como la conexión o desconexión de un dispositivo. 
+
+ 
+
+Conclusión 
+
+El gateway que estamos implementando utiliza la arquitectura DDD para dividir el sistema en capas y modelar el dominio del problema que estamos resolviendo: la gestión de dispositivos médicos a través de BLE. Las interacciones con la base de datos, el broker MQTT, la comunicación BLE y la API de BIoT están implementadas en la capa de infraestructura, mientras que la lógica de negocio se encuentra en la capa de dominio. La capa de aplicación coordina las interacciones entre las capas de infraestructura y dominio. 
