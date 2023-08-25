@@ -9,7 +9,7 @@ class BleUseCase(ABC):
         self.ble_connector = BleConnector()
         self.repository = repository
     
-    def scan_ble_devices(self) -> List[Dict[str, Any]]:
+    def scan_and_save_ble_devices(self) -> List[Dict[str, Any]]:
         devices = asyncio.run(self.ble_connector.scan_devices())
 
         # Save the scanned devices into the SQLite database

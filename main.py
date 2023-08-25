@@ -19,7 +19,7 @@ def main():
     device_repository = SqliteConnector(db_path="devices.db")
     ble_use_case = BleUseCase(repository=device_repository)
 
-    devices = ble_use_case.scan_ble_devices()
+    devices = ble_use_case.scan_and_save_ble_devices()
 
     for device in devices:
         print(device)
