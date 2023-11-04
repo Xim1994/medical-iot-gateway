@@ -1,0 +1,51 @@
+{
+  "data": [
+    {
+      "_name": { "firstName": "Imaginae", "lastName": "Test" },
+      "_email": "info@imaginae.net",
+      "_locale": "en_US",
+      "_gender": "MALE",
+      "_dateOfBirth": "1987-06-25",
+      "_mfa": { "enabled": false, "expirationInMinutes": null },
+      "_nationalId": "IT1",
+      "_id": "0ad9df86-66f6-4136-8d12-2b7299de4d8f",
+      "_ownerOrganization": {
+        "id": "a416a889-8cc6-46d9-bbef-2c0df6bd78ea",
+        "name": "Onalabs_test",
+        "templateId": "2aaa71cf-8a10-4253-9576-6fd160a85b2d",
+        "parentEntityId": null
+      },
+      "_caregiver": {
+        "id": "e3cd9156-585a-4c64-82d2-85c07dfedcca",
+        "name": "Encarnación Jiménez María (x1)",
+        "templateId": "336ad952-5261-48b5-918f-0d5aef03dced",
+        "parentEntityId": null
+      },
+      "_creationTime": "2023-08-01T16:23:06.189Z",
+      "_lastModifiedTime": "2023-08-04T08:46:15.419Z",
+      "_invitationAccepted": true,
+      "_template": {
+        "id": "a38f32d7-de6c-4252-9061-9bcdc253f6c9",
+        "name": "Patient",
+        "displayName": "Patient"
+      },
+      "_referencers": null,
+      "_enabled": "ENABLED",
+      "_username": "info@imaginae.net",
+      "_canLogin": true,
+      "_caption": "Test Imaginae (IT1)"
+    }
+  ],
+  "metadata": {
+    "sort": [],
+    "filter": {
+      "_ownerOrganization.id": {
+        "in": ["a416a889-8cc6-46d9-bbef-2c0df6bd78ea"],
+        "notIn": []
+      },
+      "_id": { "in": ["0ad9df86-66f6-4136-8d12-2b7299de4d8f"], "notIn": [] }
+    },
+    "page": { "totalResults": 1, "page": 0, "limit": 30 },
+    "freeTextSearch": ""
+  }
+}
